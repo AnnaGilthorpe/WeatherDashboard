@@ -24,8 +24,36 @@ let dayFive = moment().add(3, 'days');
 console.log(tomorrow.format('L'));
 $("#dayFive").text(dayFive.format("L"));
 
+//Event listener
+//On click that sets items - current time and value that is entered into the text area
+//getCity
 
-fetch ("http://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid=4ff9b6d7f7d6a25b5cc77d6e320e6ea5")
+//Event listener to track what data is inputted to search bar
+let searchInput = document.querySelector("#search-data")
+
+searchInput.addEventListener("input",e => {
+    const value = e.target.value
+    console.log(value) })
+
+//On click event listener that when search button is clicked
+// the searchInput is added to the API query
+// 
+// let searchButton = document.getElementById("#search-button");
+
+// searchButton.addEventListener("click", getCity() {
+//     let value = d
+// }
+
+    // let searchButton = document.getElementById("#search-button");
+    // searchButton.addEventListener("click", getCity() {
+    // let searchButtonVal = 
+    //     let value = $(this).siblings('.work-description').val()
+    //     let time = $(this).parent().attr('id')
+
+    //     localStorage.setItem(time, JSON.stringify(value))
+    // })})
+
+fetch ("http://api.openweathermap.org/geo/1.0/direct?q=Newcastle&limit=5&appid=4ff9b6d7f7d6a25b5cc77d6e320e6ea5")
     .then(response => response.json())
     .then(citiesFound => {
         let firstCity = citiesFound[0];
