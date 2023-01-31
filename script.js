@@ -4,8 +4,6 @@ let dayWeek = today.format("L")
 $("#currentDay").text(dayWeek);
 console.log(dayWeek);
 
-
-
 //Day2 date
 let tomorrow = moment().add(1, 'days');
 console.log(tomorrow.format("L"));
@@ -33,29 +31,8 @@ $("#dayFive").text(dayFive.format("L"));
 //Event listener to track what data is inputted to search bar
 let searchInput = document.querySelector("#search-data")
 
-//searchInput.addEventListener("input",e => {
-//    const value = e.target.value
- //   console.log(value) })
-
-//On click event listener that when search button is clicked
-// the searchInput is added to the API query
-// 
-// let searchButton = document.getElementById("#search-button");
-
-// searchButton.addEventListener("click", getCity() {
-//     let value = d
-// }
-
-    // let searchButton = document.getElementById("#search-button");
-    // searchButton.addEventListener("click", getCity() {
-    // let searchButtonVal = 
-    //     let value = $(this).siblings('.work-description').val()
-    //     let time = $(this).parent().attr('id')
-
-    //     localStorage.setItem(time, JSON.stringify(value))
-    // })})
     let srchHistory = []
-    var srchBtn = document.querySelector("#search-button");
+    let srchBtn = document.querySelector("#search-button");
 
     srchBtn.addEventListener('click', function(event) {
 
@@ -66,7 +43,7 @@ let searchInput = document.querySelector("#search-data")
         localStorage.setItem("City Name", JSON.stringify(srchInput));
     })
     
-    
+//Search input function
     function x (srchInput) {
         fetch (`http://api.openweathermap.org/geo/1.0/direct?q=${srchInput}&limit=5&appid=4ff9b6d7f7d6a25b5cc77d6e320e6ea5`)
         .then(response => response.json())
@@ -96,4 +73,6 @@ let searchInput = document.querySelector("#search-data")
         })
     }
 
-    
+    //Get search input item from local storage
+     srchHistory = JSON.parse(localStorage.getItem("srchInput"));
+    console.log(srchHistory);
