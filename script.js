@@ -31,9 +31,9 @@ $("#dayFive").text(dayFive.format("L"));
 //Event listener to track what data is inputted to search bar
 let searchInput = document.querySelector("#search-data")
 
-searchInput.addEventListener("input",e => {
-    const value = e.target.value
-    console.log(value) })
+//searchInput.addEventListener("input",e => {
+//    const value = e.target.value
+ //   console.log(value) })
 
 //On click event listener that when search button is clicked
 // the searchInput is added to the API query
@@ -53,17 +53,35 @@ searchInput.addEventListener("input",e => {
     //     localStorage.setItem(time, JSON.stringify(value))
     // })})
 
-fetch ("http://api.openweathermap.org/geo/1.0/direct?q=Newcastle&limit=5&appid=4ff9b6d7f7d6a25b5cc77d6e320e6ea5")
-    .then(response => response.json())
-    .then(citiesFound => {
-        let firstCity = citiesFound[0];
-        console.log(firstCity.lat);
-        console.log(firstCity.lon);
-        return fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${firstCity.lat}&lon=${firstCity.lon}&appid=4ff9b6d7f7d6a25b5cc77d6e320e6ea5`)
-    })
+    var srchBtn = document.querySelector("#search-button");
 
+    srchBtn.addEventListener('click', function(event) {
 
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);
+        event.preventDefault();
+        var srchInput = document.querySelector("#search-input").value;  
+        x (srchInput)
+        
     })
+    
+    
+    function x (srchInput) {
+        fetch (`http://api.openweathermap.org/geo/1.0/direct?q=${srchInput}&limit=5&appid=4ff9b6d7f7d6a25b5cc77d6e320e6ea5`)
+        .then(response => response.json())
+        .then(citiesFound => {
+            let firstCity = citiesFound[0];
+            console.log(firstCity.lat);
+            console.log(firstCity.lon);
+            return fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${firstCity.lat}&lon=${firstCity.lon}&appid=4ff9b6d7f7d6a25b5cc77d6e320e6ea5`)
+        })
+        
+        
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            var x = document.querySelector("#li");
+            x.textContent = `City Name: ${data.city.name}`;
+            // localStorage.setItem("City Name", )
+        })
+    }
+
+    
