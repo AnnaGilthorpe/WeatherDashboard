@@ -40,4 +40,4 @@ N/A
  
 Usage
 Users can access the answers via the console
- ![Screenshot](/Images/PasswordGeneratorScreenshot.png)
+ ![Screenshot](assets/weather-screenshot.png)
