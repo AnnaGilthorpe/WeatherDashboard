@@ -4,6 +4,8 @@ let dayWeek = today.format("L")
 $("#currentDay").text(dayWeek);
 console.log(dayWeek);
 
+
+
 //Day2 date
 let tomorrow = moment().add(1, 'days');
 console.log(tomorrow.format("L"));
@@ -20,7 +22,7 @@ console.log(tomorrow.format('L'));
 $("#dayFour").text(dayFour.format("L"));
 
 //Day 5 date
-let dayFive = moment().add(3, 'days');
+let dayFive = moment().add(4, 'days');
 console.log(tomorrow.format('L'));
 $("#dayFive").text(dayFive.format("L"));
 
@@ -52,7 +54,7 @@ let searchInput = document.querySelector("#search-data")
 
     //     localStorage.setItem(time, JSON.stringify(value))
     // })})
-
+    let srchHistory = []
     var srchBtn = document.querySelector("#search-button");
 
     srchBtn.addEventListener('click', function(event) {
@@ -61,6 +63,7 @@ let searchInput = document.querySelector("#search-data")
         var srchInput = document.querySelector("#search-input").value;  
         x (srchInput)
         
+        localStorage.setItem("City Name", JSON.stringify(srchInput));
     })
     
     
@@ -78,8 +81,17 @@ let searchInput = document.querySelector("#search-data")
         .then(response => response.json())
         .then(data => {
             console.log(data);
-            var x = document.querySelector("#li");
-            x.textContent = `City Name: ${data.city.name}`;
+            var li = document.querySelector("#li");
+            li.textContent = `City Name: ${data.city.name}`;
+            var li2 = document.querySelector("#li2");
+            li2.textContent = `City Name: ${data.city.name}`;
+            // localStorage.setItem("City Name");
+            // let currentDayImage = '${data.city.list[0].icon[0]}`;
+            
+            // let currentDayCardText = document.querySelector("current-card-text");
+            // currentDayCardText.textContent = `City Name: ${data.city.name}`;
+          
+
             // localStorage.setItem("City Name", )
         })
     }
